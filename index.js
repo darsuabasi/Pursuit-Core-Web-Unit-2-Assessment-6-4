@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
             let movie = movies.data
 
             movie.forEach(el => {
-                // let title = movies.title;
                 let option = document.createElement("option")
                 option.innerText = el.title;
+                option.value = el.url          // for each value, grab the url; make it the innerText
                 movieBox.appendChild(option)
             })
         }catch (err) {
@@ -28,25 +28,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const getReviews = async () => {
         try {
             let allFilms = await axios.get("https://ghibliapi.herokuapp.com/films")
+            let filmInfo = allFilms.data
+            console.log(filmInfo)
+            // allFilms.forEach(el => {
+            //     let movieTitle = filmInfo.title;
+            //     let releaseYear = filmInfo.release_date;
+            //     let movieDescription = filmInfo.description;
 
-            allFilms.forEach(el => {
-                let movieTitle = allFilms.title;
-                let releaseYear = allFilms.release_date;
-                let movieDescription = allFilms.description;
+            //     h3.innerText = movieTitle;
+            //     let h3 = document.createElement("h3")
+            //     mainData.appendChild(h3)
 
-                h3.innerText = movieTitle;
-                let h3 = document.createElement("h3")
-                mainData.appendChild(h3)
+            //     p1.innerText = releaseYear;
+            //     let p1 = document.createElement("p")
+            //     mainData.appendChild(p1)
 
-                p1.innerText = releaseYear;
-                let p1 = document.createElement("p")
-                mainData.appendChild(p1)
+            //     p2.innerText = movieDescription;
+            //     let p2 = document.createElement("p")
+            //     mainData.appendChild(p2)
 
-                p2.innerText = movieDescription;
-                let p2 = document.createElement("p")
-                mainData.appendChild(p2)
-
-            })
+            // })
+            title.innerText = filmInfo.title
+            releaseYear.innerText = filmInfo.releaseYear
+            movieDescription.innerText = filmInfo.movieDescription
 
         } catch (err) {
             console.log(err)
@@ -66,6 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 })
+
+// dropdown box ; when you change the drop down slector 
+
+// select.addEventListener("change", (event) => {
+//     title.innerText = ""
+//     releaseEvents.innerText = ""
+//     description.innerText = ""
+//     getReviews(event.currentTarget.value)
+// })
 
 
 
