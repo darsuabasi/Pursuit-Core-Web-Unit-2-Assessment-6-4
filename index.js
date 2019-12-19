@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let userReviews = document.querySelector("#userReviews")
     let movieBox = document.querySelector("#movieBox")
     let formSubmission = document.querySelector("#formSubmission")
-    let url = "https://ghibliapi.herokuapp.com/films"
-    let id = url.id
+    // let url = "https://ghibliapi.herokuapp.com/films"
+    let id ;
 
     const displayMovies = async () => {
         try {
-            let movies = await axios.get(id)
+            let movies = await axios.get(`https://ghibliapi.herokuapp.com/films${id}`)
             let title = movies.title
             title.forEach(movie => {
                 // let title = movies.title;
