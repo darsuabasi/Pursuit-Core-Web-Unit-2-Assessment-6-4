@@ -11,18 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const displayMovies = async () => {
         try {
-            let movies = await axios.get(`https://ghibliapi.herokuapp.com/films${id}`)
-            let title = movies.title
-            title.forEach(movie => {
+            let movies = await axios.get(`https://ghibliapi.herokuapp.com/films`)
+            let movie = movies.data
+
+            movie.forEach(el => {
                 // let title = movies.title;
                 let option = document.createElement("option")
-                option.innerText = title;
+                option.innerText = el.title;
                 movieBox.appendChild(option)
             })
         }catch (err) {
             console.log(err)
         }
     }
+   displayMovies()
     const getReviews = async () => {
         try {
             let allFilms = await axios.get("https://ghibliapi.herokuapp.com/films")
@@ -54,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("mainData").innerHTML = " ";
         getReviews()
     })
-
     formSubmission.addEventListener("submit",(event) =>{
         event.preventDefault()
         let newLi = document.createElement("li")
