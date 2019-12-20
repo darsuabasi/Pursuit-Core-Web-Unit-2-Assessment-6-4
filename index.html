@@ -22,8 +22,9 @@
     <div id="mainBody">
       <form action="selectBox">
 
-        <select name="movies" id="movieBox" style="width: 300px;"></select>
-        <button id="infoButton">Get Info</button>
+        <select name="movies" id="movieBox" style="width: 300px;">
+            <option value="" selected disabled> Yuurrr, pick a movie</option>
+        </select>
       </form>
     </div>
 
@@ -34,7 +35,7 @@
     <form id="formSubmission">
         Input Review Below <br> 
         <input type="text" enter="Input" style="width: 400px; height: 20px; "><br>
-        <button> Submit Review </button>
+        <button id="reviewButton"> Submit Review </button>
     </form>
     <ul id="userReviews"> </ul>
   </body>
