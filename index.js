@@ -4,23 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let mainData = document.querySelector("#mainData")
     let userReviews = document.querySelector("#userReviews")
     let movieBox = document.querySelector("#movieBox")
+    let selectBox = document.querySelector("#selectBox")
     let formSubmission = document.querySelector("#formSubmission")
     let reviewButton = document.querySelector("#reviewButton")
-    let id;
+    let id; 
 
     const populateMovies = async () => {
         try {
-            let movies = await axios.get(`https://ghibliapi.herokuapp.com/films`)
+            let movies = await axios.get("https://ghibliapi.herokuapp.com/films")
             let movie = movies.data
-
+            
+            // await axios.get("https://ghibliapi.herokuapp.com/films/{id}")
+            // movies.id
             movie.forEach(el => {
                 let option = document.createElement("option")
                 option.innerText = el.title;
-                
+                option.value = el.id
                 movieBox.appendChild(option)
-
-
-
             })
         } catch (err) {
             console.log(err)
@@ -28,13 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     populateMovies()
 
-    const displayReviews = async () => {
+    const displayReviews = async (id) => {
         try {
-            let allFilms = await axios.get("https://ghibliapi.herokuapp.com/films/")
+            let allFilms = await axios.get(`https://ghibliapi.herokuapp.com/films/${id}`)
             let film = allFilms.data;
+            
+            
             let movieTitle = film.title
             let releaseYear = film.release_date
             let movieDescription = film.description
+
+
+            // let h3 = document.createElement("h3")
+            // h3.innerText = movieTitle
+            // mainData.appendChild(h3)
 
             let h3 = document.createElement("h3")
             h3.innerText = movieTitle
@@ -43,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             let p1 = document.createElement("p")
-            p1.innerText = releaseYear;
+            p1.innerText = releaseYear
             mainData.appendChild(p1)
 
 
@@ -62,8 +69,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     movieBox.addEventListener("change", (event) => {
         document.getElementById("mainData").innerHTML = " ";
-
         displayReviews(event.currentTarget.value)
 
     })
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        // let title = document.querySelector("h3")
+        // let newLi = document.createElement("li")
+
+        let reviewTitle = document.createElement("p")
+        reviewTitle.innerText = title.innerText
+        li.appendChild(reviewTitle);
+
+        let reviewDes = document.createElement("p")
+        reviewDes.innerText = userReviews.value
+        li.appendChild(reviewDes);
+
+
+        // newLi.innerText = "userInput.value"
+        // userReviews.appendChild(newLi)
+
+        userReviews.appendChild(li)
+
+
+        //     } else if(title && userReview.value !== "") {
+        //         event.preventDefault();
+        //         let li = document.createElement("li");
+
+        //         let reviewTitle = document.createElement("h4");
+        //         reviewTitle.innerText = title.innerText;
+        //         li.appendChild(reviewTitle);
+
+        //         let reviewText = document.createElement("p");
+        //         reviewText.innerText = userReview.value;
+        //         li.appendChild(reviewText);
+
+        //         allReviews.appendChild(li);
+        //     }
+
+
+
+        // })
+    })
+
 })
+
+// dropdown box ; when you change the drop down slector 
+
+// select.addEventListener("change", (event) => {
+//     title.innerText = ""
+//     releaseEvents.innerText = ""
+//     description.innerText = ""
+//     getReviews(event.currentTarget.value)
+// })

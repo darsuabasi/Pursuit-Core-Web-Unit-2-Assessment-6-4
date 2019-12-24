@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Movie App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
-    <link rel="stylesheet" href="./master.css" />
+    <link rel="stylesheet" href="./master.css">
+
+
+    <title>Movie App</title>
+
   </head>
   <body>
-
     <div id="header">
       <img
         src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png"
-        alt="ghibli logo"
-      />
+        alt="ghibli logo"> 
+
       <h1>Ghibli Review App</h1>
     </div>
 
     <div id="mainBody">
-      <form action="selectBox">
 
+      <form action="selectBox">
         <select name="movies" id="movieBox" style="width: 300px;">
-            <option value="" selected disabled> Yuurrr, pick a movie</option>
+          <option value="" selected disabled> Yuurrr, pick a movie</option>
         </select>
       </form>
+      
     </div>
 
-    <div id="mainData">
-
-    </div>
+    <div id="mainData"></div>
 
     <form id="formSubmission">
-        Input Review Below <br> 
-        <input type="text" enter="Input" style="width: 400px; height: 20px; "><br>
-        <button id="reviewButton"> Submit Review </button>
+      Input Review Below <br>
+      <input
+        type="text"
+        enter="Input"
+        style="width: 400px; height: 20px; "
+      />
+      <br>
+      <button id="reviewButton">Submit Review</button>
     </form>
-    <ul id="userReviews"> </ul>
+
+    <ul id="userReviews">
+
+    </ul>
   </body>
 </html>
+
+

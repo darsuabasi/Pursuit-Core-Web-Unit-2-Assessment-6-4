@@ -2,7 +2,7 @@ body {
     background: lavender;
     display: grid;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     height: 100vh;
 }
 h1 {
