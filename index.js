@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         userReviews.appendChild(li)
 
 
-        
+    })   
 // dropdown box ; when you change the drop down slector 
 
 // select.addEventListener("change", (event) => {
@@ -87,4 +87,4 @@ document.addEventListener("DOMContentLoaded", () => {
 //     releaseEvents.innerText = ""
 //     description.innerText = ""
 //     getReviews(event.currentTarget.value)
-// })
+})
