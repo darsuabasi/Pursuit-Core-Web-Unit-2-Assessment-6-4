@@ -70,21 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
         displayReviews(event.currentTarget.value)
 
     })
-    reviewButton.addEventListener("submit", (event) => {
-        event.preventDefault(userInput.value)
-        userReview()
-
-        
-
-        userReviews.appendChild(li)
-
-
+    reviewButton.addEventListener("click", (event) => {
+        event.preventDefault()
+        let filmTitle = document.querySelector("h3");
+        let li = document.createElement("li");
+        let input = document.querySelector("#formSubmission");
+        li.innerText = input.value
+        input.value = ""
+        let ul = document.querySelector("#userReviews")
+        ul.appendChild(li)
     })   
-// dropdown box ; when you change the drop down slector 
-
-// select.addEventListener("change", (event) => {
-//     title.innerText = ""
-//     releaseEvents.innerText = ""
-//     description.innerText = ""
-//     getReviews(event.currentTarget.value)
 })
