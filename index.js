@@ -32,37 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             let allFilms = await axios.get(`https://ghibliapi.herokuapp.com/films/${id}`)
             let film = allFilms.data;
-            
-            
             let movieTitle = film.title
             let releaseYear = film.release_date
             let movieDescription = film.description
-
-
-            // let h3 = document.createElement("h3")
-            // h3.innerText = movieTitle
-            // mainData.appendChild(h3)
 
             let h3 = document.createElement("h3")
             h3.innerText = movieTitle
             mainData.appendChild(h3)
 
-
-
             let p1 = document.createElement("p")
             p1.innerText = releaseYear
             mainData.appendChild(p1)
 
-
             let p2 = document.createElement("p")
             p2.innerText = movieDescription;
             mainData.appendChild(p2)
-
-
-
         } catch (err) {
             console.log(err)
         }
+    }
+    const userReview = (userR) => {
+        let li = document.createElement("li")
+        let title = document.createElement("p")
+        title.innerText = movieBox.options[movieBox.selectedIndex].text + ": "
+        
+        let post = document.createElement("p")
+        li.innerText = review
+        li.className = "reviews"
+        li.prepend(title)
+        submissions.appendChild(li)
     }
 
 
@@ -72,48 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
         displayReviews(event.currentTarget.value)
 
     })
-    form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        // let title = document.querySelector("h3")
-        // let newLi = document.createElement("li")
+    reviewButton.addEventListener("submit", (event) => {
+        event.preventDefault(userInput.value)
+        userReview()
 
-        let reviewTitle = document.createElement("p")
-        reviewTitle.innerText = title.innerText
-        li.appendChild(reviewTitle);
-
-        let reviewDes = document.createElement("p")
-        reviewDes.innerText = userReviews.value
-        li.appendChild(reviewDes);
-
-
-        // newLi.innerText = "userInput.value"
-        // userReviews.appendChild(newLi)
+        
 
         userReviews.appendChild(li)
 
 
-        //     } else if(title && userReview.value !== "") {
-        //         event.preventDefault();
-        //         let li = document.createElement("li");
-
-        //         let reviewTitle = document.createElement("h4");
-        //         reviewTitle.innerText = title.innerText;
-        //         li.appendChild(reviewTitle);
-
-        //         let reviewText = document.createElement("p");
-        //         reviewText.innerText = userReview.value;
-        //         li.appendChild(reviewText);
-
-        //         allReviews.appendChild(li);
-        //     }
-
-
-
-        // })
-    })
-
-})
-
+        
 // dropdown box ; when you change the drop down slector 
 
 // select.addEventListener("change", (event) => {
