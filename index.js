@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // let header = document.querySelector("#header")
     let form = document.querySelector("form")
     let mainData = document.querySelector("#mainData")
     let userReviews = document.querySelector("#userReviews")
@@ -7,15 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectBox = document.querySelector("#selectBox")
     let formSubmission = document.querySelector("#formSubmission")
     let reviewButton = document.querySelector("#reviewButton")
-    let id; 
+    let id;
 
+
+    // for each movie, print it's title to moviebox selector 
     const populateMovies = async () => {
         try {
             let movies = await axios.get("https://ghibliapi.herokuapp.com/films")
             let movie = movies.data
-            
-            // await axios.get("https://ghibliapi.herokuapp.com/films/{id}")
-            // movies.id
             movie.forEach(el => {
                 let option = document.createElement("option")
                 option.innerText = el.title;
@@ -26,7 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(err)
         }
     }
-    populateMovies()
+    populateMovies()  // invoke it 
+
+
+    //for each movie, grab the title... release year and description's value.. and 
+    // then append it to the body/div
 
     const displayReviews = async (id) => {
         try {
@@ -51,33 +53,19 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(err)
         }
     }
-    const userReview = (userR) => {
-        let li = document.createElement("li")
-        let title = document.createElement("p")
-        title.innerText = movieBox.options[movieBox.selectedIndex].text + ": "
-        
-        let post = document.createElement("p")
-        li.innerText = review
-        li.className = "reviews"
-        li.prepend(title)
-        submissions.appendChild(li)
-    }
-
-
-
+    // when a movie is selected (change), display the review
     movieBox.addEventListener("change", (event) => {
-        document.getElementById("mainData").innerHTML = " ";
         displayReviews(event.currentTarget.value)
-
     })
+
+    // when the review button is clicked, add the user's value
     reviewButton.addEventListener("click", (event) => {
         event.preventDefault()
         let filmTitle = document.querySelector("h3");
         let li = document.createElement("li");
         let input = document.querySelector("#formSubmission");
         li.innerText = input.value
-        input.value = ""
         let ul = document.querySelector("#userReviews")
         ul.appendChild(li)
-    })   
+    })
 })
