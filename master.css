@@ -5,12 +5,19 @@ body {
     width: 90%;
     height: 100vh;
 }
-h1 {
-    color: purple;
-}
 #header {
     width: 70%;
     height: 150px;
+    background-color: skyblue;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 30px;
+    margin: auto;
+    /* padding-right: 100px;
+    padding-left: 100px; */
+    /* flex-direction: center;
     /* float: right;
     padding-left: 30px; */
 }
@@ -26,6 +33,8 @@ img {
 h1 {
     float: right;
     justify-content: space-between;
+    color: black;
+    padding-top: 10px;
 }
 #selectBox {
     width: 100px;
